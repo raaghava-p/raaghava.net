@@ -1,9 +1,9 @@
-Copyright [2025] [Raaghava Prashanth]
+Copyright (c) 2025 Raaghava Prashanth
 
 All Rights Reserved
 
 All files located in the /content directory and its subdirectories are 
-proprietary and confidential materials owned by [Raaghava Prashanth].
+proprietary and confidential materials owned by Raaghava Prashanth.
 
 No part of the content in the /content directory may be:
 - Reproduced
