@@ -1,0 +1,246 @@
+/* CSS Variables for Theme System */
+/* This approach allows instant theme switching without complex JavaScript */
+
+/* Global font rendering for crisp text */
+html, body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    font-smooth: always;
+    font-family: 'Atkinson Hyperlegible', system-ui, -apple-system, sans-serif;
+}
+
+/* Apply Atkinson Hyperlegible to ALL elements and ensure crisp transforms */
+* {
+    font-family: 'Atkinson Hyperlegible', system-ui, -apple-system, sans-serif;
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+    perspective: 1000;
+}
+
+/* Reset default link styles */
+a,
+a:link,
+a:visited {
+    color: inherit;
+    text-decoration: none;
+}
+
+:root {
+    /* Color Palette - Pure B&W for 8-bit aesthetic */
+    --color-primary: #000000;
+    --color-secondary: #ffffff;
+    --color-accent: #000000;
+
+    /* Background Colors */
+    --bg-primary: #ffffff;
+    --bg-secondary: #000000;
+    --bg-overlay: rgba(255, 255, 255, 0.95);
+
+    /* Text Colors */
+    --text-primary: #000000;
+    --text-secondary: #ffffff;
+    --text-muted: #666666;
+
+    /* Border and Shadow */
+    --border-color: #000000;
+    --shadow-color: #000000;
+    --shadow-offset: 2px;
+
+    /* Interactive States */
+    --hover-bg: #f0f0f0;
+    --active-bg: #e0e0e0;
+    --focus-outline: #000000;
+
+    /* Typography */
+    --font-mono: 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', monospace;
+
+    /* Dithering Pattern Options - Choose one */
+
+    /* Option 1: Classic Cross-Hatch (Current) */
+    --dither-crosshatch: repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 2px,
+        currentColor 2px,
+        currentColor 3px
+    ),
+    repeating-linear-gradient(
+        -45deg,
+        transparent,
+        transparent 2px,
+        currentColor 2px,
+        currentColor 3px
+    );
+
+    /* Option 2: Dot Matrix */
+    --dither-dots: radial-gradient(
+        circle at 25% 25%,
+        currentColor 1px,
+        transparent 1px
+    ),
+    radial-gradient(
+        circle at 75% 75%,
+        currentColor 1px,
+        transparent 1px
+    );
+
+    /* Option 3: Scanlines */
+    --dither-scanlines: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        currentColor 2px,
+        currentColor 3px
+    );
+
+    /* Option 4: Brick Pattern */
+    --dither-brick: repeating-linear-gradient(
+        0deg,
+        currentColor,
+        currentColor 2px,
+        transparent 2px,
+        transparent 4px
+    ),
+    repeating-linear-gradient(
+        90deg,
+        currentColor,
+        currentColor 2px,
+        transparent 2px,
+        transparent 8px
+    );
+
+    /* Set active pattern here */
+    --dither-pattern: var(--dither-dots);
+
+    /* Responsive typography scale (updated via aspect-ratio media queries) */
+    --headline-scale: 1;
+}
+
+/* Dark Theme - Inverts colors but preserves image appearance */
+[data-theme="dark"] {
+    --color-primary: #ffffff;
+    --color-secondary: #000000;
+    --color-accent: #ffffff;
+
+    --bg-primary: #000000;
+    --bg-secondary: #ffffff;
+    --bg-overlay: rgba(0, 0, 0, 0.95);
+
+    --text-primary: #ffffff;
+    --text-secondary: #000000;
+    --text-muted: #999999;
+
+    --border-color: #ffffff;
+    --shadow-color: #ffffff;
+
+    --hover-bg: #1a1a1a;
+    --active-bg: #333333;
+    --focus-outline: #ffffff;
+}
+
+/* Aspect-ratio driven typography scaling: taller viewports → smaller text */
+@media (max-aspect-ratio: 4/5) { :root { --headline-scale: 0.72; } }
+@media (max-aspect-ratio: 3/4) { :root { --headline-scale: 0.82; } }
+@media (max-aspect-ratio: 4/3) { :root { --headline-scale: 0.9; } }
+@media (min-aspect-ratio: 16/10) { :root { --headline-scale: 1; } }
+@media (min-aspect-ratio: 21/9) { :root { --headline-scale: 1; } }
+
+/* Font Face - Atkinson Hyperlegible for accessibility */
+@font-face {
+    font-family: 'Atkinson Hyperlegible';
+    src: url('../assets/fonts/Atkinson-Hyperlegible-Regular-102a.woff2') format('woff2'),
+         url('../assets/fonts/Atkinson-Hyperlegible-Regular-102.woff') format('woff'),
+         url('../assets/fonts/Atkinson-Hyperlegible-Regular-102.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Atkinson Hyperlegible';
+    src: url('../assets/fonts/Atkinson-Hyperlegible-Bold-102a.woff2') format('woff2'),
+         url('../assets/fonts/Atkinson-Hyperlegible-Bold-102.woff') format('woff'),
+         url('../assets/fonts/Atkinson-Hyperlegible-Bold-102.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Atkinson Hyperlegible';
+    src: url('../assets/fonts/Atkinson-Hyperlegible-Italic-102a.woff2') format('woff2'),
+         url('../assets/fonts/Atkinson-Hyperlegible-Italic-102.woff') format('woff'),
+         url('../assets/fonts/Atkinson-Hyperlegible-Italic-102.ttf') format('truetype');
+    font-weight: normal;
+    font-style: italic;
+    font-display: swap;
+}
+
+/* Global Base Styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Atkinson Hyperlegible', system-ui, -apple-system, sans-serif;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    font-size: 16px;
+    line-height: 1.5;
+    overflow-x: hidden; /* Prevent horizontal scroll during animations */
+}
+
+/* Image Handling - Preserve colors in dark mode */
+img, video, canvas, svg {
+    /* Don't invert media content in dark mode */
+    filter: none !important;
+    max-width: 100%;
+    height: auto;
+}
+
+/* Focus Management for Accessibility */
+:focus-visible {
+    outline: 2px solid var(--focus-outline);
+    outline-offset: 2px;
+}
+
+/* Selection Styles */
+::selection {
+    background: var(--text-primary);
+    color: var(--bg-primary);
+}
+
+/* Custom Scrollbar for WebKit browsers */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--border-color);
+    border-radius: 0; /* Keep 8-bit aesthetic */
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--text-muted);
+}
+
+/* Theme Transition - Smooth but fast */
+* {
+    transition:
+        background-color 0.2s ease,
+        color 0.2s ease,
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+/* Disable transitions during theme change for instant switching */
+.theme-changing * {
+    transition: none !important;
+}

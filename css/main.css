@@ -1,0 +1,1377 @@
+/* Main Layout - One-Point Perspective Museum Room */
+
+/* App Container - Full viewport */
+.app {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+    background: var(--bg-primary);
+}
+
+/* Room Container - 3D Perspective Context */
+.room {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    perspective: 1000px; /* Creates 3D space */
+    perspective-origin: center center; /* Vanishing point at center */
+}
+
+/* Wall System - Proper One-Point Perspective Room */
+.wall {
+    position: absolute;
+    border: 2px solid var(--border-color);
+    background: var(--bg-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: default;
+    transition: transform 0.08s ease;
+}
+
+/* Back Wall - Smaller, more readable */
+.back-wall {
+    width: 35vw;
+    height: 45vh;
+    top: 27.5vh;
+    left: 32.5vw;
+    z-index: 3;
+}
+
+/* Left Wall - Balanced perspective */
+.left-wall {
+    width: 32.5vw;
+    height: 45vh;
+    top: 27.5vh;
+    left: 0;
+    z-index: 2;
+    transform-origin: right center;
+    transform: perspective(1000px) rotateY(28deg);
+}
+
+/* Right Wall - Balanced perspective */
+.right-wall {
+    width: 32.5vw;
+    height: 45vh;
+    top: 27.5vh;
+    right: 0;
+    z-index: 2;
+    transform-origin: left center;
+    transform: perspective(1000px) rotateY(-28deg);
+}
+
+/* Front Wall - Closest to viewer (bottom edge) */
+.front-wall {
+    width: 35vw;
+    height: 27.5vh;
+    bottom: 0;
+    left: 32.5vw;
+    z-index: 4;
+    background: var(--bg-primary);
+    border: 2px solid var(--border-color);
+    border-bottom: none;
+    display: none; /* Hidden by default, shown in 4-wall rooms */
+}
+
+/* 4-Wall Gallery Layout - Four equal sections side by side */
+.room.four-walls .back-wall,
+.room.four-walls .left-wall,
+.room.four-walls .right-wall,
+.room.four-walls .front-wall {
+    display: none !important;
+}
+
+/* Show 4-wall specific elements */
+.room.four-walls .leftmost-wall,
+.room.four-walls .leftmiddle-wall,
+.room.four-walls .rightmiddle-wall,
+.room.four-walls .rightmost-wall {
+    display: flex !important;
+}
+
+/* Base styles for 4-wall elements */
+.leftmost-wall,
+.leftmiddle-wall,
+.rightmiddle-wall,
+.rightmost-wall {
+    position: absolute;
+    width: 18vw; /* base width */
+    height: 52vh;
+    top: 24vh;
+    border: 2px solid var(--border-color);
+    background: var(--bg-primary);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.08s ease;
+    z-index: 2;
+}
+
+/* Position walls */
+.leftmost-wall {
+    height: calc(55.5vh);
+    top: calc(22.25vh); /* maintain visual center */
+    left: 13vw;
+    --edge-gap: 13vw; /* distance to left screen edge */
+    transform-origin: right center;
+    transform: perspective(1200px) rotateY(10deg);
+    position: absolute;
+}
+
+.leftmiddle-wall {
+    left: 32vw; /* right edge meets at 50vw */
+    transform-origin: right center;
+    transform: perspective(1200px) rotateY(4deg);
+}
+
+.rightmiddle-wall {
+    left: 50vw; /* centered seam */
+    transform-origin: left center;
+    transform: perspective(1200px) rotateY(-4deg);
+}
+
+.rightmost-wall {
+
+    height: calc(55.5vh);
+    top: calc(22.25vh); /* maintain visual center */
+    left: 69vw;
+    --edge-gap: 13vw; /* distance to right screen edge */
+    transform-origin: left center;
+    transform: perspective(1200px) rotateY(-10deg);
+    position: absolute;
+}
+
+/* Perspective guide lines from outer walls to screen edges */
+.leftmost-wall::before,
+.leftmost-wall::after,
+.rightmost-wall::before,
+.rightmost-wall::after {
+    content: '';
+    position: absolute;
+    height: 0;
+    pointer-events: none;
+    z-index: 1;
+    border-top: 2px solid var(--border-color);
+}
+
+/* Left side guide lines (to left screen edge) */
+.leftmost-wall::before {
+    right: 100%;
+    top: -2px;
+    width: var(--edge-gap);
+}
+
+.leftmost-wall::after {
+    right: 100%;
+    bottom: -2px;
+    width: var(--edge-gap);
+}
+
+/* Right side guide lines (to right screen edge) */
+.rightmost-wall::before {
+    left: 100%;
+    top: -2px;
+    width: var(--edge-gap);
+}
+
+.rightmost-wall::after {
+    left: 100%;
+    bottom: -2px;
+    width: var(--edge-gap);
+}
+
+
+/* Four-wall layout uses individual wall sizing for perspective effect */
+
+/* Floor - Perspective trapezoid */
+.floor {
+    position: absolute;
+    width: 100vw;
+    height: 27.5vh;
+    bottom: 0;
+    left: 0;
+    background: var(--bg-primary);
+    border-top: none; /* remove horizontal line */
+    clip-path: polygon(0% 0%, 100% 0%, 67.5% 100%, 32.5% 100%);
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* Ceiling - Perspective trapezoid */
+.ceiling {
+    position: absolute;
+    width: 100vw;
+    height: 27.5vh;
+    top: 0;
+    left: 0;
+    background: var(--bg-primary);
+    border-bottom: none; /* remove horizontal line */
+    clip-path: polygon(32.5% 0%, 67.5% 0%, 100% 100%, 0% 100%);
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* Content Frames - Modern 8-bit museum style */
+.content-frame {
+    width: 80%;
+    height: 80%;
+    padding: 20px;
+    box-sizing: border-box;
+    background: var(--bg-primary);
+    border: 2px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    text-align: left;
+    position: relative;
+
+    /* Modern flat shadow */
+    box-shadow:
+        4px 0 0 var(--border-color),
+        0 4px 0 var(--border-color),
+        4px 4px 0 var(--border-color);
+}
+
+.wall-has-button .content-frame {
+    align-items: stretch;
+    justify-content: center;
+    padding: 0;
+}
+
+.wall-button {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: inherit;
+    gap: 1vmin;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    background: transparent;
+    border: none;
+    color: inherit;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    transition: transform 0.08s ease, box-shadow 0.08s ease;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.wall-button:focus-visible {
+    outline: 3px solid var(--accent-color, var(--border-color));
+    outline-offset: 4px;
+}
+
+.wall-button:hover {
+    transform: scale(1.0001);
+}
+
+.wall-button .wall-title {
+    font-size: 2.2vmin;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+}
+
+.wall-button .museum-label {
+    margin: 0;
+    text-transform: none;
+    letter-spacing: normal;
+    max-width: 90%;
+    position: absolute;
+    bottom: -3vmin;
+    font-size: 0.9vmin;
+}
+
+/* Optimized text alignment for perspective walls */
+.back-wall .content-frame {
+    align-items: center;
+    text-align: center;
+}
+
+.back-wall.wall-has-button .content-frame {
+    align-items: stretch;
+    text-align: center;
+    padding: 0;
+}
+
+/* Left wall buttons: position at convergence point (right side of left wall) */
+.left-wall.wall-has-button .content-frame {
+    align-items: stretch;
+    padding: 0;
+}
+
+.left-wall .wall-button {
+    align-items: flex-end;
+    text-align: right;
+    padding: 2vmin 1.5vmin 2vmin 4vmin;
+}
+
+/* Right wall buttons: position at convergence point (left side of right wall) */
+.right-wall.wall-has-button .content-frame {
+    align-items: stretch;
+    padding: 0;
+    /* Flip shadow direction for right-rotated walls to visually align frame */
+    box-shadow:
+        -4px 0 0 var(--border-color),
+        0 4px 0 var(--border-color),
+        -4px 4px 0 var(--border-color);
+}
+
+.right-wall .wall-button {
+    align-items: flex-start;
+    text-align: left;
+    padding: 2vmin 4vmin 2vmin 1.5vmin;
+}
+
+/* Left wall: position at convergence point (right side of left wall frame) */
+.left-wall .content-frame {
+    align-items: flex-end;
+    text-align: right;
+    padding: 2vmin 1.5vmin 2vmin 4vmin;
+}
+
+/* Right wall: position at convergence point (left side of right wall frame) */
+.right-wall .content-frame {
+    align-items: flex-start;
+    text-align: left;
+    padding: 2vmin 4vmin 2vmin 1.5vmin;
+    /* Flip shadow direction for right-rotated walls to visually align frame */
+    box-shadow:
+        -4px 0 0 var(--border-color),
+        0 4px 0 var(--border-color),
+        -4px 4px 0 var(--border-color);
+}
+
+/* Hover Effects - Only for interactive walls in 3-wall rooms */
+.wall.wall-has-button:hover .content-frame {
+    transform: scale(1.005);
+}
+
+.left-wall.wall-has-button:hover {
+    transform: perspective(1000px) rotateY(28deg) scale(1.002);
+}
+
+.right-wall.wall-has-button:hover {
+    transform: perspective(1000px) rotateY(-28deg) scale(1.002);
+}
+
+/* 4-wall hover effects - maintain perspective transforms */
+.leftmost-wall:hover {
+    transform: perspective(1200px) rotateY(10deg) scale(1.0001);
+}
+
+.leftmiddle-wall:hover {
+    transform: perspective(1200px) rotateY(4deg) scale(1.0001);
+}
+
+.rightmiddle-wall:hover {
+    transform: perspective(1200px) rotateY(-4deg) scale(1.0001);
+}
+
+.rightmost-wall:hover {
+    transform: perspective(1200px) rotateY(-10deg) scale(1.0001);
+}
+
+.leftmost-wall .content-frame,
+.leftmiddle-wall .content-frame,
+.rightmiddle-wall .content-frame,
+.rightmost-wall .content-frame {
+    width: 80%;
+    height: 80%;
+    padding: 20px;
+    box-sizing: border-box;
+    background: var(--bg-primary);
+    border: 2px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    box-shadow:
+        4px 0 0 var(--border-color),
+        0 4px 0 var(--border-color),
+        4px 4px 0 var(--border-color);
+}
+
+.leftmost-wall.wall-has-button .content-frame,
+.leftmiddle-wall.wall-has-button .content-frame,
+.rightmiddle-wall.wall-has-button .content-frame,
+.rightmost-wall.wall-has-button .content-frame {
+    align-items: stretch;
+    padding: 0;
+}
+
+/* Correct shadow direction on right-rotated four-wall panels */
+.rightmiddle-wall .content-frame,
+.rightmost-wall .content-frame {
+    box-shadow:
+        -4px 0 0 var(--border-color),
+        0 4px 0 var(--border-color),
+        -4px 4px 0 var(--border-color);
+}
+
+/* Typography - Museum label style with crisp rendering */
+.content-frame h1,
+.content-frame h2,
+.content-frame h3,
+.content-frame p {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    font-smooth: always;
+    text-shadow: none;
+}
+
+.content-frame h1 {
+    font-size: calc(3rem * var(--headline-scale));
+    font-weight: bold;
+    margin-bottom: 1rem;
+    letter-spacing: 0.05em;
+}
+
+.content-frame h2 {
+    font-size: calc(2.5rem * var(--headline-scale));
+    font-weight: bold;
+    margin-bottom: 0.75rem;
+    letter-spacing: 0.03em;
+}
+
+.content-frame h3 {
+    font-size: calc(2rem * var(--headline-scale));
+    font-weight: normal;
+    margin-bottom: 0.5rem;
+    letter-spacing: 0.02em;
+}
+
+.content-frame p {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+    max-width: 60ch; /* Optimal reading width */
+}
+
+.blog-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin: 20px 0;
+}
+
+.blog-post-preview {
+    border: 2px solid var(--border-color);
+    padding: 16px 20px;
+    background: var(--bg-secondary, var(--bg-primary));
+    transition: transform 0.1s ease;
+}
+
+.blog-post-preview[role="button"] {
+    cursor: pointer;
+}
+
+.blog-post-preview[role="button"]:hover {
+    transform: translateY(-2px);
+}
+
+.blog-post-preview[role="button"]:focus-visible {
+    outline: 3px solid var(--accent-color, var(--border-color));
+    outline-offset: 3px;
+}
+
+.blog-post-preview h3 {
+    margin: 0 0 8px 0;
+    font-size: 1.2rem;
+}
+
+.blog-post-preview .blog-excerpt {
+    margin: 0 0 8px 0;
+    font-size: 0.95rem;
+    opacity: 0.85;
+}
+
+.blog-post-preview .blog-date {
+    font-size: 0.85rem;
+    opacity: 0.6;
+}
+
+.blog-empty {
+    margin: 0;
+    opacity: 0.7;
+}
+
+/* Museum Labels - Perspective-aware positioning */
+.museum-label {
+    position: absolute;
+    bottom: -3vmin;
+    background: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    padding: 0.6vmin 1vmin;
+    font-size: 0.9vmin;
+    white-space: nowrap;
+}
+
+/* Default positioning (back wall and 4-wall layouts) */
+.back-wall .museum-label,
+.leftmost-wall .museum-label,
+.leftmiddle-wall .museum-label,
+.rightmiddle-wall .museum-label,
+.rightmost-wall .museum-label {
+    right: 0;
+    box-shadow: 0.2vmin 0.2vmin 0 var(--shadow-color);
+}
+
+/* Left wall: label at convergence point (bottom-right of left wall frame) */
+.left-wall .museum-label {
+    right: 0;
+    box-shadow: 0.2vmin 0.2vmin 0 var(--shadow-color);
+}
+
+/* Right wall: label at convergence point (bottom-left of right wall frame) */
+.right-wall .museum-label {
+    left: 0;
+    right: auto;
+    box-shadow: -0.2vmin 0.2vmin 0 var(--shadow-color); /* Shadow to the left */
+}
+
+/* Left wall button labels: at convergence point (bottom-right) */
+.left-wall .wall-button .museum-label {
+    right: 0;
+    left: auto;
+    box-shadow: 0.2vmin 0.2vmin 0 var(--shadow-color);
+}
+
+/* Right wall button labels: at convergence point (bottom-left) */
+.right-wall .wall-button .museum-label {
+    left: 0;
+    right: auto;
+    box-shadow: -0.2vmin 0.2vmin 0 var(--shadow-color);
+}
+
+/* Fixed Controls - Split positioning */
+.controls {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 100;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+/* Back button - Top left */
+.back-btn {
+    position: fixed !important;
+    top: 20px;
+    left: 20px;
+    z-index: 100;
+}
+
+/* Control Buttons - 8-bit aesthetic */
+.control-btn {
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    border: 2px solid var(--border-color);
+    padding: 12px 18px;
+    font-family: inherit;
+    font-size: 1rem;
+    cursor: pointer;
+
+    /* 8-bit shadow effect */
+    box-shadow: var(--shadow-offset) var(--shadow-offset) 0 var(--shadow-color);
+
+    transition: all 0.1s ease;
+}
+
+.control-btn:hover {
+    background: var(--hover-bg);
+    transform: translate(1px, 1px);
+    box-shadow: 1px 1px 0 var(--shadow-color);
+}
+
+.control-btn:active {
+    transform: translate(2px, 2px);
+    box-shadow: none;
+}
+
+.control-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: var(--shadow-offset) var(--shadow-offset) 0 var(--shadow-color);
+}
+
+/* Theme Toggle - Rotating icon */
+.theme-toggle .theme-icon {
+    display: inline-block;
+    transition: transform 0.15s ease;
+}
+
+.theme-toggle.rotating .theme-icon {
+    transform: rotate(180deg);
+}
+
+/* Plain Text Sitemap - Minimal directory interface */
+.sitemap {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: var(--bg-primary);
+    z-index: 200;
+    overflow-y: auto;
+    padding: 40px;
+    opacity: 1;
+    transition: opacity 0.2s ease;
+}
+
+.sitemap.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Keep theme toggle visible in sitemap */
+.controls {
+    z-index: 250;
+}
+
+.sitemap-content {
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+.sitemap h2 {
+    font-size: 1.2rem;
+    font-weight: normal;
+    margin-bottom: 30px;
+    text-align: center;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 20px;
+}
+
+.sitemap-nav {
+    margin: 20px 0;
+}
+
+.sitemap-list,
+.sitemap-sublist {
+    list-style: none;
+    margin: 0;
+    padding-left: 0;
+}
+
+.sitemap-sublist {
+    margin-top: 10px;
+    padding-left: 20px;
+    border-left: 2px solid var(--border-color);
+}
+
+.sitemap-item {
+    margin-bottom: 16px;
+}
+
+.sitemap-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-primary);
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px 0;
+}
+
+.sitemap-link:hover,
+.sitemap-link:focus-visible {
+    color: var(--accent-color, var(--text-primary));
+    outline: 2px solid var(--accent-color, var(--border-color));
+    outline-offset: 2px;
+}
+
+.sitemap-description {
+    display: block;
+    font-size: 0.85rem;
+    opacity: 0.7;
+    margin-top: 4px;
+    text-transform: none;
+    letter-spacing: normal;
+}
+
+/* Plain Text Headers */
+.plain-header h2 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 0 0 10px 0;
+}
+
+.plain-header p {
+    font-size: 0.9rem;
+    opacity: 0.7;
+    margin: 0 0 30px 0;
+}
+
+/* Plain Sections */
+.plain-section {
+    margin: 30px 0;
+}
+
+.plain-section h3 {
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin: 0 0 15px 0;
+    text-transform: uppercase;
+}
+
+.plain-section a {
+    display: block;
+    color: var(--text-primary);
+    text-decoration: underline;
+    padding: 4px 0;
+    margin: 2px 0;
+}
+
+.plain-section a:hover {
+    background: var(--text-primary);
+    color: var(--bg-primary);
+    text-decoration: none;
+    padding-left: 10px;
+}
+
+/* Expandable Sections */
+.expandable-section {
+    margin: 20px 0;
+}
+
+.section-header {
+    font-size: 1rem;
+    font-weight: bold;
+    margin: 15px 0 10px 0;
+    cursor: pointer;
+    user-select: none;
+}
+
+.section-header:hover {
+    background: var(--bg-primary);
+    text-decoration: underline;
+}
+
+.chevron {
+    font-family: monospace;
+    margin-right: 8px;
+    transition: transform 0.1s ease;
+}
+
+.section-content {
+    margin-left: 20px;
+    padding-top: 10px;
+}
+
+/* Content Categories */
+.content-category {
+    margin: 15px 0;
+}
+
+.category-header {
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin: 10px 0 5px 0;
+    cursor: pointer;
+    user-select: none;
+}
+
+.category-header:hover {
+    text-decoration: underline;
+}
+
+.content-items {
+    margin-left: 20px;
+    padding-top: 5px;
+}
+
+.content-items a {
+    display: block;
+    color: var(--text-primary);
+    text-decoration: underline;
+    padding: 2px 0;
+    margin: 1px 0;
+    font-size: 0.9rem;
+}
+
+.content-items a:hover {
+    background: var(--text-primary);
+    color: var(--bg-primary);
+    text-decoration: none;
+    padding-left: 8px;
+}
+
+.item-count {
+    display: block;
+    font-size: 0.8rem;
+    opacity: 0.6;
+    margin-top: 8px;
+    font-style: italic;
+}
+
+.close-sitemap {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: var(--bg-primary);
+    border: 2px solid var(--border-color);
+    color: var(--text-primary);
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.close-sitemap:hover {
+    background: var(--text-primary);
+    color: var(--bg-primary);
+}
+
+/* Loading States */
+.loading {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 150;
+    text-align: center;
+}
+
+.loading-spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid var(--border-color);
+    border-top: 3px solid transparent;
+    border-radius: 0; /* Keep square for 8-bit look */
+    animation: spin 0.6s linear infinite;
+    margin: 0 auto 10px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Error Display */
+.error {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: var(--bg-primary);
+    border: 2px solid var(--border-color);
+    padding: 15px;
+    max-width: 300px;
+    z-index: 150;
+
+    /* 8-bit shadow */
+    box-shadow: 3px 3px 0 var(--shadow-color);
+}
+
+/* Utility Classes */
+.hidden {
+    display: none !important;
+}
+
+.visually-hidden {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    clip: rect(0, 0, 0, 0) !important;
+    white-space: nowrap !important;
+    border: 0 !important;
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 768px) {
+    /* Mobile adaptations */
+    .back-wall {
+        width: 60%;
+        height: 50%;
+        top: 25%;
+        left: 20%;
+    }
+
+    .left-wall,
+    .right-wall {
+        width: 20%;
+        height: 50%;
+        top: 25%;
+    }
+
+    .left-wall {
+        left: 0;
+        transform: perspective(800px) rotateY(30deg) translateZ(-80px);
+    }
+
+    .right-wall {
+        right: 0;
+        transform: perspective(800px) rotateY(-30deg) translateZ(-80px);
+    }
+
+    .content-frame {
+        padding: 15px;
+    }
+
+    .content-frame h1 {
+        font-size: 1.8rem;
+    }
+
+    .content-frame h2 {
+        font-size: 1.5rem;
+    }
+
+    .controls {
+        top: 10px;
+        left: 10px;
+        gap: 8px;
+    }
+
+    .control-btn {
+        padding: 10px 14px;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    /* Small mobile adaptations */
+    .back-wall {
+        width: 80%;
+        height: 40%;
+        top: 30%;
+        left: 10%;
+    }
+
+    .left-wall,
+    .right-wall {
+        width: 15%;
+        height: 40%;
+        top: 30%;
+    }
+
+    .content-frame h1 {
+        font-size: 1.5rem;
+    }
+
+    .museum-label {
+        font-size: 0.75rem;
+        padding: 6px 8px;
+    }
+}
+
+/* Main Page Header - Only shows on homepage */
+.main-page-header {
+    position: absolute;
+    top: 15%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 5;
+    text-align: center;
+    width: 100%;
+    pointer-events: none;
+}
+
+.main-page-header h1 {
+    font-family: var(--font-mono);
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0;
+    letter-spacing: 0.15em;
+    text-transform: lowercase;
+    text-shadow: 0 0 10px var(--bg-primary);
+    background: var(--bg-primary);
+    padding: 0.5rem 2rem;
+    border: 2px solid var(--border-color);
+    display: inline-block;
+}
+
+/* Responsive adjustments for main page header */
+@media (max-width: 768px) {
+    .main-page-header {
+        top: 12%;
+    }
+
+    .main-page-header h1 {
+        font-size: 1.5rem;
+        padding: 0.4rem 1.5rem;
+        letter-spacing: 0.1em;
+    }
+}
+
+@media (max-width: 480px) {
+    .main-page-header {
+        top: 10%;
+    }
+
+    .main-page-header h1 {
+        font-size: 1.2rem;
+        padding: 0.3rem 1rem;
+        letter-spacing: 0.08em;
+    }
+}
+
+/* Section Heading - For four-wall layouts */
+.section-heading {
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    text-align: center;
+    width: 100%;
+    pointer-events: none;
+}
+
+.section-heading h1 {
+    font-family: var(--font-mono);
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: var(--text-primary);
+    margin: 0;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+/* Responsive adjustments for section heading */
+@media (max-width: 768px) {
+    .section-heading h1 {
+        font-size: 1.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .section-heading h1 {
+        font-size: 1.4rem;
+    }
+}
+
+/* Sitemap section links - Bold caps formatting like original HOME */
+.section-link {
+    font-weight: bold;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--text-primary);
+    display: block;
+    margin: 0.5rem 0;
+    padding: 0.25rem 0;
+}
+
+.section-link:hover {
+    color: var(--text-accent);
+}
+
+/* Hierarchy Indicator - Shows current location path */
+.hierarchy-indicator {
+    position: fixed;
+    bottom: 15px;
+    right: 20px;
+    z-index: 90;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--text-primary);
+    opacity: 1;
+    pointer-events: none;
+    text-align: right;
+    line-height: 1.2;
+}
+
+#hierarchy-path {
+    display: inline-block;
+    background: var(--bg-primary);
+    padding: 4px 8px;
+    border: 1px solid var(--border-color);
+    letter-spacing: 0.05em;
+}
+
+/* Hide hierarchy indicator on homepage */
+.hierarchy-indicator.home-page {
+    display: none;
+}
+
+/* Responsive adjustments for hierarchy indicator */
+@media (max-width: 768px) {
+    .hierarchy-indicator {
+        bottom: 10px;
+        right: 15px;
+        font-size: 0.65rem;
+    }
+
+    #hierarchy-path {
+        padding: 3px 6px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hierarchy-indicator {
+        bottom: 8px;
+        right: 10px;
+        font-size: 0.6rem;
+    }
+
+    #hierarchy-path {
+        padding: 2px 5px;
+    }
+}
+
+/* Mobile Orientation Overlay - Only show on mobile portrait */
+.rotate-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: var(--bg-primary);
+    z-index: 220;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border: none;
+}
+
+.rotate-content {
+    max-width: 300px;
+    padding: 2rem;
+    border: 2px solid var(--border-color);
+    background: var(--bg-primary);
+    box-shadow: 4px 4px 0 var(--border-color);
+}
+
+.rotate-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    display: block;
+}
+
+.rotate-content h2 {
+    font-size: 1.5rem;
+    margin: 0 0 1rem 0;
+    font-weight: bold;
+}
+
+.rotate-content p {
+    font-size: 1rem;
+    margin: 0 0 1.5rem 0;
+    opacity: 0.8;
+    line-height: 1.4;
+}
+
+.plaintext-button {
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    border: 2px solid var(--border-color);
+    padding: 12px 24px;
+    font-family: inherit;
+    font-size: 1rem;
+    cursor: pointer;
+    box-shadow: 4px 4px 0 var(--border-color);
+    transition: all 0.1s ease;
+    width: 100%;
+}
+
+.plaintext-button:hover {
+    background: var(--hover-bg);
+    transform: translate(1px, 1px);
+    box-shadow: 2px 2px 0 var(--border-color);
+}
+
+.plaintext-button:active {
+    transform: translate(2px, 2px);
+    box-shadow: none;
+}
+
+/* Critical: Only show on mobile when taller than square */
+@media (max-width: 768px) and (max-aspect-ratio: 1/1) {
+    .rotate-overlay:not(.hidden) {
+        display: flex;
+    }
+
+    /* Hide main content when overlay is shown */
+    .rotate-overlay:not(.hidden) ~ * {
+        display: none;
+    }
+
+    /* But keep the overlay itself visible */
+    .rotate-overlay:not(.hidden) {
+        display: flex !important;
+    }
+}
+
+/* Empty State Styles */
+.empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 3rem 2rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.empty-state h2 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--text-primary);
+    margin: 0 0 1rem 0;
+}
+
+.empty-state p {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    margin: 0;
+    line-height: 1.6;
+}
+
+/* Never show on larger screens */
+@media (min-width: 769px) {
+    .rotate-overlay {
+        display: none !important;
+    }
+}
+
+/* About Page - Content Frame Fitting */
+.about-content {
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    box-sizing: border-box;
+}
+
+.about-bio {
+    width: 100%;
+    height: auto;
+}
+
+.markdown-content {
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+.markdown-content h1 {
+    font-size: 1.4rem;
+    margin: 0 0 1rem 0;
+}
+
+.markdown-content h2 {
+    font-size: 1.2rem;
+    margin: 1rem 0 0.75rem 0;
+}
+
+.markdown-content h3 {
+    font-size: 1.05rem;
+    margin: 0.75rem 0 0.5rem 0;
+}
+
+.markdown-content p {
+    margin: 0 0 0.75rem 0;
+    font-size: 0.9rem;
+}
+
+.markdown-content ul,
+.markdown-content ol {
+    margin: 0.5rem 0;
+    padding-left: 1.5rem;
+}
+
+.markdown-content li {
+    margin: 0.25rem 0;
+}
+
+/* About Page - Left Wall Content */
+.left-wall-content {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    width: 100%;
+}
+
+/* About Page - Contact Section Styles */
+.contact-section {
+    margin-bottom: 1rem;
+}
+
+.contact-section a {
+    color: var(--text-primary);
+    text-decoration: none;
+    transition: all 0.15s ease;
+}
+
+.contact-section a:hover {
+    text-decoration: underline;
+}
+
+/* About Page - Right Wall Content */
+.right-wall-content {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    width: 100%;
+}
+
+/* About Page - Testimonial Section */
+.testimonial-section {
+    margin-bottom: 1rem;
+}
+
+.testimonial-section h3 {
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin: 0 0 1rem 0;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.testimonial {
+    font-style: italic;
+    line-height: 1.6;
+    margin: 0 0 0.75rem 0;
+    padding: 0;
+    color: var(--text-primary);
+    font-size: 0.8rem;
+}
+
+.testimonial::before {
+    content: '"';
+}
+
+.testimonial::after {
+    content: '"';
+}
+
+.testimonial-attribution {
+    font-style: normal;
+    font-size: 0.8rem;
+    margin: 0;
+    color: var(--text-primary);
+}
+
+/* About Page - Social Links Styles */
+.social-link {
+    display: block;
+    color: var(--text-primary);
+    text-decoration: none;
+    margin-bottom: 0.5rem;
+    transition: all 0.15s ease;
+}
+
+.social-link:hover {
+    text-decoration: underline;
+}

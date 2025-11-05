@@ -1,0 +1,224 @@
+/**
+ * Museum Label Styles
+ * Professional museum-style labels for artwork and content
+ */
+
+/* Base Museum Label Styles */
+.museum-label {
+    background: var(--bg-primary);
+    border: 2px solid var(--border-color);
+    padding: 12px 16px;
+    margin: 10px 0;
+    font-family: 'Atkinson Hyperlegible', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-size: 0.85rem;
+    line-height: 1.4;
+    color: var(--text-primary);
+    max-width: 300px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Title Styling */
+.museum-label .label-title {
+    font-weight: bold;
+    font-size: 0.95rem;
+    margin-bottom: 4px;
+    color: var(--text-primary);
+}
+
+/* Creator/Author Information */
+.museum-label .label-author,
+.museum-label .label-artist,
+.museum-label .label-creator {
+    font-style: italic;
+    margin-bottom: 2px;
+    opacity: 0.9;
+}
+
+/* Date and Year */
+.museum-label .label-date,
+.museum-label .label-year {
+    font-size: 0.8rem;
+    margin-bottom: 2px;
+    opacity: 0.8;
+}
+
+/* Medium and Technical Details */
+.museum-label .label-medium,
+.museum-label .label-dimensions,
+.museum-label .label-genre,
+.museum-label .label-duration,
+.museum-label .label-album {
+    font-size: 0.8rem;
+    margin-bottom: 2px;
+    opacity: 0.85;
+}
+
+/* Description Text */
+.museum-label .label-description {
+    margin-top: 8px;
+    margin-bottom: 6px;
+    font-size: 0.8rem;
+    line-height: 1.3;
+    opacity: 0.9;
+}
+
+/* Technical Photography Details */
+.museum-label .label-technical {
+    margin-top: 6px;
+    padding-top: 6px;
+    border-top: 1px solid var(--border-color);
+    font-size: 0.75rem;
+    opacity: 0.7;
+}
+
+.museum-label .label-camera,
+.museum-label .label-lens,
+.museum-label .label-settings {
+    margin-bottom: 1px;
+}
+
+/* Location Information */
+.museum-label .label-location {
+    margin-top: 4px;
+    font-size: 0.75rem;
+    opacity: 0.7;
+    font-style: italic;
+}
+
+/* Tags and Categories */
+.museum-label .label-tags {
+    margin-top: 6px;
+    font-size: 0.75rem;
+    opacity: 0.7;
+    color: var(--text-secondary);
+}
+
+/* Meta Information Row */
+.museum-label .label-meta {
+    margin: 4px 0;
+    font-size: 0.8rem;
+}
+
+.museum-label .label-meta span {
+    margin-right: 8px;
+    opacity: 0.8;
+}
+
+.museum-label .label-meta span:after {
+    content: " • ";
+    opacity: 0.5;
+}
+
+.museum-label .label-meta span:last-child:after {
+    content: "";
+}
+
+/* Curated Content Specific */
+.museum-label .label-rating {
+    margin-top: 6px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--accent-color, #666);
+}
+
+.museum-label .label-commentary {
+    margin-top: 8px;
+    padding: 6px 8px;
+    background: var(--bg-secondary);
+    border-left: 3px solid var(--border-color);
+    font-size: 0.8rem;
+    font-style: italic;
+    line-height: 1.3;
+}
+
+.museum-label .label-link {
+    margin-top: 8px;
+    padding-top: 6px;
+    border-top: 1px solid var(--border-color);
+}
+
+.museum-label .label-link a {
+    color: var(--text-primary);
+    text-decoration: underline;
+    font-size: 0.75rem;
+    opacity: 0.8;
+}
+
+.museum-label .label-link a:hover {
+    opacity: 1;
+}
+
+/* License Information */
+.museum-label .label-license {
+    margin-top: 6px;
+    font-size: 0.7rem;
+    opacity: 0.6;
+    font-style: italic;
+}
+
+/* Section Labels (Larger format) */
+.museum-label.section-label {
+    max-width: 400px;
+    padding: 16px 20px;
+    text-align: center;
+    border: 3px solid var(--border-color);
+}
+
+.museum-label.section-label .label-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+}
+
+.museum-label.section-label .label-subtitle {
+    font-size: 0.9rem;
+    opacity: 0.8;
+    font-style: italic;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .museum-label {
+        max-width: 250px;
+        padding: 10px 12px;
+        font-size: 0.8rem;
+    }
+
+    .museum-label .label-title {
+        font-size: 0.9rem;
+    }
+
+    .museum-label.section-label {
+        max-width: 300px;
+        padding: 12px 16px;
+    }
+
+    .museum-label.section-label .label-title {
+        font-size: 1.1rem;
+    }
+}
+
+/* Theme-specific adjustments */
+[data-theme="dark"] .museum-label {
+    box-shadow: 0 2px 4px rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="dark"] .museum-label .label-commentary {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+/* Print Styles */
+@media print {
+    .museum-label {
+        background: white;
+        color: black;
+        border: 2px solid black;
+        box-shadow: none;
+        break-inside: avoid;
+    }
+
+    .museum-label .label-link a {
+        color: black;
+    }
+}

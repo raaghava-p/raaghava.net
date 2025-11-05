@@ -1,0 +1,355 @@
+/* Animation System - Smooth Room Transitions */
+
+/* Room Transition Classes - Fast camera panning */
+.room-transition {
+    pointer-events: none;
+}
+
+.room-transition * {
+    transition: transform 0.1s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* POV Rotation - Looking at left wall */
+.room.view-left {
+    transform: rotateY(30deg);
+}
+
+.room.view-left .left-wall {
+    transform: perspective(800px) rotateY(0deg) scale(1.4) translateZ(100px);
+    z-index: 5;
+}
+
+.room.view-left .back-wall {
+    transform: perspective(800px) rotateY(-30deg) translateX(-15vw) scale(0.8);
+    opacity: 0.7;
+}
+
+.room.view-left .right-wall {
+    transform: perspective(800px) rotateY(-80deg) translateX(-20vw) scale(0.6);
+    opacity: 0.4;
+}
+
+/* POV Rotation - Looking at right wall */
+.room.view-right {
+    transform: rotateY(-30deg);
+}
+
+.room.view-right .right-wall {
+    transform: perspective(800px) rotateY(0deg) scale(1.4) translateZ(100px);
+    z-index: 5;
+}
+
+.room.view-right .back-wall {
+    transform: perspective(800px) rotateY(30deg) translateX(15vw) scale(0.8);
+    opacity: 0.7;
+}
+
+.room.view-right .left-wall {
+    transform: perspective(800px) rotateY(80deg) translateX(20vw) scale(0.6);
+    opacity: 0.4;
+}
+
+/* Smooth Horizontal Pan - Camera movement */
+.room.pan-to-left {
+    transform: translateX(60vw) rotateY(-20deg);
+}
+
+.room.pan-to-left .left-wall {
+    transform: perspective(800px) rotateY(0deg) scale(1.5) translateZ(100px);
+    z-index: 5;
+}
+
+.room.pan-to-left .back-wall {
+    transform: translateX(-40vw) scale(0.8);
+    opacity: 0.6;
+}
+
+.room.pan-to-left .right-wall {
+    transform: perspective(800px) rotateY(-70deg) translateX(-50vw) scale(0.7);
+    opacity: 0.3;
+}
+
+.room.pan-to-right {
+    transform: translateX(-60vw) rotateY(20deg);
+}
+
+.room.pan-to-right .right-wall {
+    transform: perspective(800px) rotateY(0deg) scale(1.5) translateZ(100px);
+    z-index: 5;
+}
+
+.room.pan-to-right .back-wall {
+    transform: translateX(40vw) scale(0.8);
+    opacity: 0.6;
+}
+
+.room.pan-to-right .left-wall {
+    transform: perspective(800px) rotateY(70deg) translateX(50vw) scale(0.7);
+    opacity: 0.3;
+}
+
+/* POV Forward - Looking at back wall (for content focus) */
+.room.view-back .back-wall {
+    transform: scale(1.6) translateZ(150px);
+    z-index: 5;
+}
+
+.room.view-back .left-wall {
+    transform: perspective(800px) rotateY(50deg) scale(0.7) translateZ(-100px);
+    opacity: 0.5;
+}
+
+.room.view-back .right-wall {
+    transform: perspective(800px) rotateY(-50deg) scale(0.7) translateZ(-100px);
+    opacity: 0.5;
+}
+
+/* Content Loading Animations */
+.content-enter {
+    animation: contentFadeIn 0.2s ease-out forwards;
+}
+
+.content-exit {
+    animation: contentFadeOut 0.15s ease-in forwards;
+}
+
+@keyframes contentFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes contentFadeOut {
+    from {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(-20px) scale(0.95);
+    }
+}
+
+/* Museum Label Animations */
+.museum-label {
+    animation: labelSlideUp 0.25s ease-out 0.1s both;
+}
+
+@keyframes labelSlideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Button Press Animations - 8-bit style */
+.control-btn.pressed {
+    animation: buttonPress 0.1s ease-out;
+}
+
+@keyframes buttonPress {
+    0% {
+        transform: translate(0, 0);
+        box-shadow: var(--shadow-offset) var(--shadow-offset) 0 var(--shadow-color);
+    }
+    50% {
+        transform: translate(2px, 2px);
+        box-shadow: none;
+    }
+    100% {
+        transform: translate(0, 0);
+        box-shadow: var(--shadow-offset) var(--shadow-offset) 0 var(--shadow-color);
+    }
+}
+
+/* Theme Toggle Rotation - Smooth transition */
+.theme-toggle.changing .theme-icon {
+    animation: themeRotate 0.3s ease-in-out;
+}
+
+@keyframes themeRotate {
+    0% {
+        transform: rotate(0deg);
+    }
+    50% {
+        transform: rotate(90deg) scale(1.1);
+    }
+    100% {
+        transform: rotate(180deg);
+    }
+}
+
+/* Loading Spinner - 8-bit square rotation */
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    25% {
+        transform: rotate(90deg);
+    }
+    50% {
+        transform: rotate(180deg);
+    }
+    75% {
+        transform: rotate(270deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Sitemap Slide In/Out */
+.sitemap.entering {
+    animation: sitemapSlideIn 0.2s ease-out;
+}
+
+.sitemap.exiting {
+    animation: sitemapSlideOut 0.2s ease-in;
+    animation-fill-mode: forwards;
+}
+
+@keyframes sitemapSlideIn {
+    from {
+        opacity: 0;
+        backdrop-filter: blur(0);
+    }
+    to {
+        opacity: 1;
+        backdrop-filter: blur(4px);
+    }
+}
+
+@keyframes sitemapSlideOut {
+    from {
+        opacity: 1;
+        backdrop-filter: blur(4px);
+    }
+    to {
+        opacity: 0;
+        backdrop-filter: blur(0);
+    }
+}
+
+/* Hover Dither Effect - Cross-hatch pattern animation */
+.wall:hover .content-frame::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--dither-pattern);
+    opacity: 0;
+    animation: ditherFadeIn 0.15s ease-out forwards;
+    pointer-events: none;
+    z-index: 1;
+}
+
+@keyframes ditherFadeIn {
+    from {
+        opacity: 0;
+        transform: scale(1.05);
+    }
+    to {
+        opacity: 0.1;
+        transform: scale(1);
+    }
+}
+
+/* Error Toast Slide In */
+.error.showing {
+    animation: errorSlideIn 0.15s ease-out;
+}
+
+@keyframes errorSlideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Prefers Reduced Motion - Accessibility */
+@media (prefers-reduced-motion: reduce) {
+    /* Disable all animations for users who prefer reduced motion */
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+
+    .room-transition * {
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* High Contrast Mode - Accessibility */
+@media (prefers-contrast: high) {
+    .content-frame::before,
+    .content-frame::after {
+        display: none;
+    }
+
+    .wall:hover {
+        outline: 3px solid var(--focus-outline);
+    }
+}
+
+/* Performance Optimizations */
+.wall,
+.content-frame,
+.control-btn {
+    /* GPU acceleration for smooth animations */
+    will-change: transform;
+}
+
+.room-transition .wall {
+    /* Promote to composite layer during transitions */
+    transform: translateZ(0);
+}
+
+/* Touch Device Adaptations */
+@media (hover: none) and (pointer: coarse) {
+    /* Remove hover effects on touch devices */
+    .wall:hover {
+        transform: none;
+    }
+
+    .left-wall:hover {
+        transform: perspective(1000px) rotateY(25deg) translateZ(-100px);
+    }
+
+    .right-wall:hover {
+        transform: perspective(1000px) rotateY(-25deg) translateZ(-100px);
+    }
+
+    .wall:hover .content-frame::after {
+        display: none;
+    }
+
+    /* Add active states for touch */
+    .wall:active {
+        transform: scale(0.98);
+    }
+
+    .left-wall:active {
+        transform: perspective(1000px) rotateY(25deg) translateZ(-110px) scale(0.98);
+    }
+
+    .right-wall:active {
+        transform: perspective(1000px) rotateY(-25deg) translateZ(-110px) scale(0.98);
+    }
+}

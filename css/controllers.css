@@ -1,0 +1,885 @@
+/**
+ * Controller-specific UI Elements - REDESIGNED
+ * Styles for 3-wall layout personal controllers
+ */
+
+/* ========================================
+   3-WALL LAYOUT CONTAINER
+   ======================================== */
+
+.wall-content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
+
+/* Left wall - align content to the right (closer to center) */
+#left-content .wall-content {
+    align-items: flex-end;
+    justify-content: flex-start;
+    padding-right: 2rem;
+    padding-top: 3rem;
+}
+
+#left-content .wall-content * {
+    text-align: right;
+}
+
+/* Right wall - align content to the left (closer to center) */
+#right-content .wall-content {
+    align-items: flex-start;
+    padding-left: 3rem;
+}
+
+#right-content .wall-content * {
+    text-align: left;
+}
+
+/* ========================================
+   COLLECTION LINKS (LEFT WALL)
+   ======================================== */
+
+.wall-heading {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--text-primary);
+    margin: 0 0 1.5rem 0;
+    text-align: right;
+    width: auto;
+    align-self: flex-end;
+}
+
+.collection-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: auto;
+    align-items: flex-end;
+}
+
+.collection-link {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: var(--text-primary);
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    text-align: right;
+    display: inline-block;
+    white-space: nowrap;
+}
+
+.collection-link:hover {
+    text-decoration: underline;
+}
+
+.collection-link.active {
+    text-decoration: underline;
+    opacity: 0.7;
+}
+
+/* ========================================
+   PHOTO / MUSIC / PROJECT GRIDS (2x3)
+   ======================================== */
+
+.photo-grid-2x3,
+.track-grid-2x3,
+.project-grid-2x3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, auto);
+    gap: 1rem;
+    width: 100%;
+    max-width: 800px;
+    margin: 1rem 0;
+}
+
+.photo-grid-item,
+.track-grid-item,
+.project-grid-item {
+    aspect-ratio: 1;
+    cursor: pointer;
+    border: 3px solid var(--border-color);
+    background: var(--bg-secondary);
+    transition: all 0.15s ease;
+    overflow: hidden;
+}
+
+.photo-grid-item:hover,
+.track-grid-item:hover,
+.project-grid-item:hover {
+    border-color: var(--text-primary);
+    transform: scale(1.05);
+}
+
+.photo-thumbnail,
+.track-thumbnail,
+.project-thumbnail {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* ========================================
+   COLLECTION TITLES
+   ======================================== */
+
+.collection-title {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--text-primary);
+    margin: 0 0 1.5rem 0;
+    text-align: center;
+}
+
+/* ========================================
+   "MORE" BUTTONS
+   ======================================== */
+
+.more-label {
+    position: absolute;
+    background: var(--bg-primary);
+    border: 2px solid var(--border-color);
+    color: var(--text-primary);
+    font-family: 'Atkinson Hyperlegible', sans-serif;
+    font-size: 0.9rem;
+    font-weight: bold;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    text-transform: lowercase;
+    transition: all 0.15s ease;
+}
+
+.more-label:hover {
+    background: var(--text-primary);
+    color: var(--bg-primary);
+}
+
+.more-label.bottom-left {
+    bottom: 1.5rem;
+    left: 1.5rem;
+}
+
+.more-label.bottom-right {
+    bottom: 1.5rem;
+    right: 1.5rem;
+}
+
+/* ========================================
+   RANDOM BUTTONS (RIGHT WALL)
+   ======================================== */
+
+.random-button {
+    width: 200px;
+    height: 200px;
+    background: var(--bg-secondary);
+    border: 3px solid var(--border-color);
+    color: var(--text-primary);
+    font-family: 'Atkinson Hyperlegible', sans-serif;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.random-button:hover {
+    background: var(--text-primary);
+    color: var(--bg-primary);
+    transform: scale(1.1);
+}
+
+.random-button h3 {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+/* ========================================
+   WRITINGS SPECIFIC STYLES
+   ======================================== */
+
+.wall-section-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--text-primary);
+    margin: 0 0 1rem 0;
+    text-align: center;
+}
+
+.article-section {
+    width: 100%;
+    max-width: 800px;
+    margin: 1rem 0;
+}
+
+.article-section-heading {
+    font-size: 1rem;
+    font-weight: bold;
+    color: var(--text-secondary);
+    margin: 0 0 0.5rem 0;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.article-item {
+    background: var(--bg-secondary);
+    border: 2px solid var(--border-color);
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.article-item:hover {
+    background: var(--text-primary);
+    color: var(--bg-primary);
+    border-width: 3px;
+}
+
+.article-title {
+    font-size: 1.3rem;
+    font-weight: bold;
+    margin: 0 0 0.5rem 0;
+}
+
+.article-description {
+    font-size: 0.95rem;
+    line-height: 1.4;
+    opacity: 0.9;
+    margin: 0;
+}
+
+.featured-section {
+    margin-bottom: 2rem;
+}
+
+/* ========================================
+   LEGACY STYLES (OLD SYSTEM)
+   ======================================== */
+
+/* Writing excerpt in preview */
+.writing-excerpt {
+    font-size: 0.9rem;
+    opacity: 0.8;
+    margin: 0.5rem 0;
+    line-height: 1.4;
+}
+
+/* Genre badges for music */
+.track-genres {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem;
+    margin: 0.5rem 0;
+}
+
+.genre-badge {
+    display: inline-block;
+    padding: 2px 6px;
+    background: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-primary);
+}
+
+/* Project status badges */
+.project-status-badge {
+    display: inline-block;
+    padding: 4px 10px;
+    font-size: 0.7rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin: 0.5rem 0;
+    border: 2px solid var(--border-color);
+}
+
+.status-completed {
+    background: #90ee90;
+    color: #000;
+}
+
+.status-ongoing {
+    background: #ffd700;
+    color: #000;
+}
+
+.status-planned {
+    background: #add8e6;
+    color: #000;
+}
+
+/* ========================================
+   GRID LIGHTBOX VIEWS
+   ======================================== */
+
+/* Random Link on Right Wall */
+.random-link {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--text-primary);
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.random-link:hover {
+    text-decoration: underline;
+}
+
+/* Main Page Photo Grid (3 columns on main wall) */
+.main-photo-grid {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    grid-template-rows: repeat(2, 1fr) !important;
+    gap: 0.5rem;
+    width: 85%;
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 0;
+}
+
+.main-photo-card {
+    cursor: pointer;
+    border: 2px solid var(--border-color);
+    background: var(--bg-secondary);
+    transition: all 0.15s ease;
+    overflow: hidden;
+    aspect-ratio: 1;
+    width: 100%;
+}
+
+.main-photo-card:hover {
+    border-color: var(--text-primary);
+    transform: scale(1.05);
+}
+
+.main-photo-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Lightbox Modal Photo Grid Cards */
+.photo-grid-card {
+    cursor: pointer;
+    border: 3px solid var(--border-color);
+    background: var(--bg-secondary);
+    transition: all 0.15s ease;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.photo-grid-card:hover {
+    border-color: var(--text-primary);
+    transform: scale(1.05);
+}
+
+.photo-grid-img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+    background: #222;
+}
+
+.photo-grid-title {
+    padding: 0.75rem;
+    margin: 0;
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: #000 !important;
+    background: #fff;
+    text-align: center;
+    border-top: 2px solid var(--border-color);
+}
+
+.lightbox-grid-container {
+    width: 95%;
+    max-width: 1800px;
+    padding: 2rem;
+}
+
+.lightbox-grid-title {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--text-primary);
+    margin: 0 0 2rem 0;
+    text-align: center;
+}
+
+.lightbox-grid-items {
+    display: grid;
+    gap: 1.5rem;
+    max-height: calc(80vh - 150px);
+    overflow-y: auto;
+    padding: 1rem;
+}
+
+/* Photo and Music grids - thumbnail-based */
+.lightbox-grid-photo .lightbox-grid-items,
+.lightbox-grid-music .lightbox-grid-items,
+.lightbox-grid-project .lightbox-grid-items {
+    grid-template-columns: repeat(3, 1fr) !important;
+}
+
+/* Writing grid - list-based */
+.lightbox-grid-writing .lightbox-grid-items {
+    grid-template-columns: 1fr;
+}
+
+.grid-item {
+    cursor: pointer;
+    border: 3px solid var(--border-color);
+    background: var(--bg-secondary);
+    transition: all 0.15s ease;
+    overflow: hidden;
+}
+
+.grid-item:hover {
+    border-color: var(--text-primary);
+    transform: scale(1.02);
+}
+
+.grid-item-photo,
+.grid-item-music,
+.grid-item-project {
+    aspect-ratio: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 250px; /* Ensure grid items have height */
+}
+
+.grid-item-writing {
+    padding: 1.5rem;
+}
+
+.grid-item-thumbnail {
+    width: 100%;
+    height: 200px; /* Fixed height instead of percentage */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: #333; /* Debug: show the thumbnail area */
+}
+
+.grid-item-info {
+    flex: 1;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.grid-item-info h3 {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: var(--text-primary);
+    margin: 0 0 0.5rem 0;
+    line-height: 1.2;
+}
+
+.grid-item-description {
+    font-size: 0.9rem;
+    line-height: 1.3;
+    color: var(--text-primary);
+    opacity: 0.8;
+    margin: 0;
+}
+
+/* ========================================
+   RESPONSIVE ADJUSTMENTS
+   ======================================== */
+
+@media (max-width: 768px) {
+    .wall-content {
+        padding: 1rem;
+    }
+
+    .photo-grid-2x3,
+    .track-grid-2x3,
+    .project-grid-2x3 {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(3, 1fr);
+        max-width: 500px;
+        gap: 0.75rem;
+    }
+
+    .collection-title {
+        font-size: 1.5rem;
+    }
+
+    .collection-text-button {
+        font-size: 1rem;
+        padding: 0.75rem 1rem;
+    }
+
+    .random-button {
+        width: 150px;
+        height: 150px;
+    }
+
+    .random-button h3 {
+        font-size: 1.2rem;
+    }
+
+    .article-title {
+        font-size: 1.1rem;
+    }
+
+    .article-description {
+        font-size: 0.85rem;
+    }
+
+    .lightbox-grid-items {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)) !important;
+        gap: 1rem;
+    }
+
+    .writing-excerpt {
+        font-size: 0.85rem;
+    }
+
+    .genre-badge {
+        font-size: 0.6rem;
+        padding: 2px 5px;
+    }
+
+    .project-status-badge {
+        font-size: 0.65rem;
+        padding: 3px 8px;
+    }
+}
+
+@media (max-width: 480px) {
+    .wall-content {
+        padding: 0.5rem;
+    }
+
+    .photo-grid-2x3,
+    .track-grid-2x3,
+    .project-grid-2x3 {
+        grid-template-columns: repeat(2, 1fr);
+        max-width: 350px;
+        gap: 0.5rem;
+    }
+
+    .collection-title {
+        font-size: 1.2rem;
+    }
+
+    .collection-text-button {
+        font-size: 0.9rem;
+        padding: 0.6rem 0.8rem;
+    }
+
+    .random-button {
+        width: 120px;
+        height: 120px;
+    }
+
+    .random-button h3 {
+        font-size: 1rem;
+    }
+
+    .article-item {
+        padding: 1rem;
+    }
+
+    .article-title {
+        font-size: 1rem;
+    }
+
+    .article-description {
+        font-size: 0.8rem;
+    }
+
+    .more-label {
+        font-size: 0.75rem;
+        padding: 0.4rem 0.8rem;
+    }
+
+    .lightbox-grid-container {
+        padding: 1rem;
+    }
+
+    .lightbox-grid-title {
+        font-size: 1.5rem;
+    }
+
+    .lightbox-grid-items {
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)) !important;
+        gap: 0.75rem;
+    }
+
+    .writing-excerpt {
+        font-size: 0.8rem;
+    }
+
+    .genre-badge {
+        font-size: 0.55rem;
+    }
+
+    .project-status-badge {
+        font-size: 0.6rem;
+    }
+}
+
+/* ========================================
+   ABOUT PAGE STYLES
+   ======================================== */
+
+.about-content {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.about-bio {
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* Markdown content styling for about page */
+.markdown-content {
+    line-height: 1.7;
+    color: var(--text-primary);
+}
+
+.markdown-content h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin: 0 0 1.5rem 0;
+    color: var(--text-primary);
+    letter-spacing: 0.02em;
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 0.5rem;
+}
+
+.markdown-content h2 {
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin: 2rem 0 1rem 0;
+    color: var(--text-primary);
+    letter-spacing: 0.01em;
+}
+
+.markdown-content h3 {
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin: 1.5rem 0 0.75rem 0;
+    color: var(--text-primary);
+}
+
+.markdown-content p {
+    margin: 0 0 1.2rem 0;
+    font-size: 1.05rem;
+    line-height: 1.8;
+}
+
+.markdown-content ul,
+.markdown-content ol {
+    margin: 1rem 0;
+    padding-left: 2rem;
+}
+
+.markdown-content li {
+    margin: 0.5rem 0;
+    line-height: 1.6;
+}
+
+.markdown-content blockquote {
+    border-left: 4px solid var(--border-color);
+    padding-left: 1.5rem;
+    margin: 1.5rem 0;
+    font-style: italic;
+    color: var(--text-secondary);
+}
+
+.markdown-content code {
+    background: var(--bg-secondary);
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.9em;
+    border: 1px solid var(--border-color);
+}
+
+.markdown-content pre {
+    background: var(--bg-secondary);
+    padding: 1rem;
+    overflow-x: auto;
+    border: 2px solid var(--border-color);
+    margin: 1rem 0;
+}
+
+.markdown-content pre code {
+    background: none;
+    padding: 0;
+    border: none;
+}
+
+.markdown-content a {
+    color: var(--text-primary);
+    text-decoration: underline;
+    transition: all 0.15s ease;
+}
+
+.markdown-content a:hover {
+    background: var(--text-primary);
+    color: var(--bg-primary);
+    text-decoration: none;
+}
+
+.markdown-content hr {
+    border: none;
+    border-top: 2px solid var(--border-color);
+    margin: 2rem 0;
+}
+
+/* Contact section on left wall */
+.contact-section {
+    text-align: right;
+}
+
+.contact-section h3 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 0 0 1.5rem 0;
+    text-align: right;
+}
+
+.contact-section p {
+    margin: 0.5rem 0;
+    font-size: 1rem;
+    text-align: right;
+}
+
+.contact-section a {
+    color: var(--text-primary);
+    text-decoration: none;
+    transition: all 0.15s ease;
+}
+
+.contact-section a:hover {
+    text-decoration: underline;
+}
+
+.contact-section .location {
+    opacity: 0.7;
+    font-size: 0.95rem;
+}
+
+/* Links section on right wall */
+.links-section {
+    text-align: left;
+}
+
+.links-section h3 {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin: 0 0 1rem 0;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.social-links {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: flex-end;
+}
+
+.social-link {
+    display: inline-block;
+    color: var(--text-primary);
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1rem;
+    transition: all 0.15s ease;
+    text-align: right;
+}
+
+.social-link:hover {
+    text-decoration: underline;
+}
+
+/* Responsive adjustments for about page */
+@media (max-width: 768px) {
+    .about-content {
+        padding: 1.5rem;
+    }
+
+    .markdown-content h1 {
+        font-size: 2rem;
+    }
+
+    .markdown-content h2 {
+        font-size: 1.5rem;
+    }
+
+    .markdown-content h3 {
+        font-size: 1.2rem;
+    }
+
+    .markdown-content p {
+        font-size: 1rem;
+    }
+
+    .contact-section h3,
+    .links-section h3 {
+        font-size: 1.1rem;
+    }
+
+    .social-link {
+        padding: 0.6rem 0.8rem;
+        font-size: 0.95rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .about-content {
+        padding: 1rem;
+    }
+
+    .markdown-content h1 {
+        font-size: 1.6rem;
+    }
+
+    .markdown-content h2 {
+        font-size: 1.3rem;
+    }
+
+    .markdown-content h3 {
+        font-size: 1.1rem;
+    }
+
+    .markdown-content p {
+        font-size: 0.95rem;
+    }
+
+    .markdown-content ul,
+    .markdown-content ol {
+        padding-left: 1.5rem;
+    }
+
+    .contact-section h3,
+    .links-section h3 {
+        font-size: 1rem;
+    }
+
+    .social-link {
+        padding: 0.5rem 0.7rem;
+        font-size: 0.9rem;
+    }
+}

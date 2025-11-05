@@ -1,0 +1,529 @@
+{
+  "metadata": {
+    "lastUpdated": "2025-11-01T18:24:25Z",
+    "totalPhotos": 27,
+    "featuredCount": 0,
+    "collections": 1
+  },
+  "collections": {
+    "default": {
+      "name": "2025 and before",
+      "featured": true
+    }
+  },
+  "photos": {
+    "photo-001": {
+      "id": "photo-001",
+      "filename": "riversong",
+      "title": "riversong",
+      "description": "",
+      "location": "",
+      "date": "",
+      "camera": "",
+      "lens": "",
+      "settings": {
+        "aperture": "",
+        "shutter": "",
+        "iso": "",
+        "focal_length": ""
+      },
+      "tags": [],
+      "featured": false,
+      "collection": "default"
+    },
+    "photo-002": {
+      "id": "photo-002",
+      "filename": "universalPaperclips",
+      "title": "universalPaperclips",
+      "description": "",
+      "location": "",
+      "date": "",
+      "camera": "",
+      "lens": "",
+      "settings": {
+        "aperture": "",
+        "shutter": "",
+        "iso": 0,
+        "focal_length": ""
+      },
+      "tags": [],
+      "featured": false,
+      "collection": "default"
+    },
+    "photo-003": {
+      "id": "photo-003",
+      "filename": "CurtainCall",
+      "title": "CurtainCall",
+      "description": "",
+      "location": "",
+      "date": "2024-08-13",
+      "camera": "Apple iPhone X",
+      "lens": "iPhone X back dual camera 4mm f/1.8",
+      "settings": {
+        "aperture": "9/5",
+        "shutter": "1/5",
+        "iso": 0,
+        "focal_length": "4/1"
+      },
+      "tags": [],
+      "featured": false,
+      "collection": "default"
+    },
+    "photo-004": {
+      "id": "photo-004",
+      "filename": "delta",
+      "title": "delta",
+      "description": "",
+      "location": "",
+      "date": "2023-05-01",
+      "camera": "Apple iPhone 13",
+      "lens": "iPhone 13 back dual wide camera 5.1mm f/1.6",
+      "settings": {
+        "aperture": "8/5",
+        "shutter": "1/89",
+        "iso": 0,
+        "focal_length": "51/10"
+      },
+      "tags": [],
+      "featured": false,
+      "collection": "default"
+    },
+    "photo-005": {
+      "id": "photo-005",
+      "filename": "dualityOfMan",
+      "title": "dualityOfMan",
+      "description": "",
+      "location": "",
+      "date": "",
+      "camera": "",
+      "lens": "",
+      "settings": {
+        "aperture": "",
+        "shutter": "",
+        "iso": 0,
+        "focal_length": ""
+      },
+      "tags": [],
+      "featured": false,
+      "collection": "default"
+    },
+    "photo-006": {
+      "id": "photo-006",
+      "filename": "duskflare",
+      "title": "duskflare",
+      "description": "",
+      "location": "",
+      "date": "2024-09-18",
+      "camera": "Apple iPhone X",
+      "lens": "iPhone X back dual camera 4mm f/1.8",
+      "settings": {
+        "aperture": "9/5",
+        "shutter": "1/657",
+        "iso": 0,
+        "focal_length": "4/1"
+      },
+      "tags": [],
+      "featured": false,
+      "collection": "default"
+    },
+    "photo-007": {
+      "id": "photo-007",
+      "filename": "girCow",
+      "title": "girCow",
+      "description": "",
+      "location": "",
+      "date": "2024-03-30",
+      "camera": "Apple iPhone 13",
+      "lens": "iPhone 13 back dual wide camera 5.1mm f/1.6",
+      "settings": {
+        "aperture": "8/5",
+        "shutter": "1/121",
+        "iso": 0,
+        "focal_length": "51/10"
+      },
+      "tags": [],
+      "featured": false,
+      "collection": "default"
+    },
+    "photo-008": {
+      "id": "photo-008",
+      "filename": "homeOven",
+      "title": "homeOven",
+      "description": "",
+      "location": "",
+      "date": "2023-12-28",
+      "camera": "Apple iPhone 13",
+      "lens": "iPhone 13 back dual wide camera 5.1mm f/1.6",
+      "settings": {
+        "aperture": "8/5",
+        "shutter": "1/50",
+        "iso": 0,
+        "focal_length": "51/10"
+      },
+      "tags": [],
+      "featured": false,
+      "collection": "default"
+    },
+    "photo-009": {
+      "id": "photo-009",
+      "filename": "Jayanagara",
+      "title": "Jayanagara",
+      "description": "",
+      "location": "",
+      "date": "2024-04-07",
+      "camera": "Apple iPhone 13",
+      "lens": "iPhone 13 back dual wide camera 5.1mm f/1.6",
+      "settings": {
+        "aperture": "8/5",
+        "shutter": "1/13",
+        "iso": 0,
+        "focal_length": "51/10"
+      },
+      "tags": [],
+      "featured": false,
+      "collection": "default"
+    },
+    "photo-010": {
+      "id": "photo-010",
+      "filename": "1050MW",
+      "title": "1050MW",
+      "description": "",
+      "location": "",
+      "date": "2025-06-29",
+      "camera": "Apple iPhone 16",
+      "lens": "iPhone 16 back dual wide camera 2.22mm f/2.2",
+      "settings": {
+        "aperture": "11/5",
+        "shutter": "1/3390",
+        "iso": 0,
+        "focal_length": "1551800/699009"
+      },
+      "tags": [],
+      "featured": false,
+      "collection": "default"
+    },
+    "photo-011": {
+      "id": "photo-011",
+      "filename": "afterdisk",
+      "title": "afterdisk",
+      "description": "",
+      "location": "",
+      "date": "2025-05-23",
+      "camera": "Apple iPhone 16",
+      "lens": "iPhone 16 back dual wide camera 5.96mm f/1.6",
+      "settings": {
+        "aperture": "8/5",
+        "shutter": "1/4",
+        "iso": 0,
+        "focal_length": "6249513/1048576"
+      },
+      "tags": [],
+      "featured": false,
+      "collection": "default"
+    },
+    "photo-012": {
+      "id": "photo-012",
+      "filename": "chandamama",
+      "title": "chandamama",
+      "description": "",
+      "location": "",
+      "date": "2025-03-14",
+      "camera": "Canon Canon EOS 650D",
+      "lens": "EF-S18-135mm f/3.5-5.6 IS STM",
+      "settings": {
+        "aperture": "28/5",
+        "shutter": "1/160",
+        "iso": 0,
+        "focal_length": "135/1"
+      },
+      "tags": [],
+      "featured": false,
+      "collection": "default"
+    },
+    "photo-013": {
+      "id": "photo-013",
+      "filename": "crestedHawkEagle",
+      "title": "crestedHawkEagle",
+      "description": "",
+      "location": "",
+      "date": "2025-08-22",
+      "camera": "Canon Canon EOS 650D",
+      "lens": "EF-S18-135mm f/3.5-5.6 IS STM",
+      "settings": {
+        "aperture": "28/5",
+        "shutter": "1/2000",
+        "iso": 0,
+        "focal_length": "135/1"
+      },
+      "tags": [],
+      "featured": false,
+      "collection": "default"
+    },
+    "photo-014": {
+      "id": "photo-014",
+      "filename": "felidae",
+      "title": "felidae",
+      "description": "",
+      "location": "",
+      "date": "2025-08-24",
+      "camera": "Canon Canon EOS 650D",
+      "lens": "EF-S18-135mm f/3.5-5.6 IS STM",
+      "settings": {
+        "aperture": "28/5",
+        "shutter": "1/400",
+        "iso": 0,
+        "focal_length": "135/1"
+      },
+      "tags": [],
+      "featured": false,
+      "collection": "default"
+    },
+    "photo-015": {
+      "id": "photo-015",
+      "filename": "gaur",
+      "title": "gaur",
+      "description": "",
+      "location": "",
+      "date": "2025-08-24",
+      "camera": "Canon Canon EOS 650D",
+      "lens": "EF-S18-135mm f/3.5-5.6 IS STM",
+      "settings": {
+        "aperture": "28/5",
+        "shutter": "1/100",
+        "iso": 0,
+        "focal_length": "100/1"
+      },
+      "tags": [],
+      "featured": false,
+      "collection": "default"
+    },
+    "photo-016": {
+      "id": "photo-016",
+      "filename": "Kingfisher",
+      "title": "Kingfisher",
+      "description": "",
+      "location": "",
+      "date": "2023-05-05",
+      "camera": "Canon Canon EOS 650D",
+      "lens": "EF100-400mm f/4.5-5.6L IS USM",
+      "settings": {
+        "aperture": "28/5",
+        "shutter": "1/2000",
+        "iso": 0,
+        "focal_length": "400/1"
+      },
+      "tags": [],
+      "featured": false,
+      "collection": "default"
+    },
+    "photo-017": {
+      "id": "photo-017",
+      "filename": "LightEmmittingDiana-Ambalpadi",
+      "title": "Ambalpadi",
+      "description": "",
+      "location": "",
+      "date": "2025-03-13",
+      "camera": "Apple iPhone 16",
+      "lens": "iPhone 16 back dual wide camera 5.96mm f/1.6",
+      "settings": {
+        "aperture": "8/5",
+        "shutter": "1/33",
+        "iso": 0,
+        "focal_length": "6249513/1048576"
+      },
+      "tags": [],
+      "featured": false,
+      "collection": "default"
+    },
+    "photo-018": {
+      "id": "photo-018",
+      "filename": "mallasandra",
+      "title": "mallasandra",
+      "description": "",
+      "location": "",
+      "date": "2025-07-17",
+      "camera": "Apple iPhone 16",
+      "lens": "iPhone 16 back dual wide camera 5.96mm f/1.6",
+      "settings": {
+        "aperture": "8/5",
+        "shutter": "1/1312",
+        "iso": 0,
+        "focal_length": "6249513/1048576"
+      },
+      "tags": [],
+      "featured": false,
+      "collection": "default"
+    },
+    "photo-019": {
+      "id": "photo-019",
+      "filename": "oilpainted",
+      "title": "oilpainted",
+      "description": "",
+      "location": "",
+      "date": "2025-09-30",
+      "camera": "Apple iPhone 16",
+      "lens": "iPhone 16 back dual wide camera 5.96mm f/1.6",
+      "settings": {
+        "aperture": "8/5",
+        "shutter": "1/124",
+        "iso": 0,
+        "focal_length": "6249513/1048576"
+      },
+      "tags": [],
+      "featured": false,
+      "collection": "default"
+    },
+    "photo-020": {
+      "id": "photo-020",
+      "filename": "pantheraTigrisTigris",
+      "title": "pantheraTigrisTigris",
+      "description": "",
+      "location": "",
+      "date": "2025-08-24",
+      "camera": "Canon Canon EOS 650D",
+      "lens": "EF-S18-135mm f/3.5-5.6 IS STM",
+      "settings": {
+        "aperture": "28/5",
+        "shutter": "1/400",
+        "iso": 0,
+        "focal_length": "132/1"
+      },
+      "tags": [],
+      "featured": false,
+      "collection": "default"
+    },
+    "photo-021": {
+      "id": "photo-021",
+      "filename": "peacock",
+      "title": "peacock",
+      "description": "",
+      "location": "",
+      "date": "2025-08-23",
+      "camera": "Canon Canon EOS 650D",
+      "lens": "EF-S18-135mm f/3.5-5.6 IS STM",
+      "settings": {
+        "aperture": "28/5",
+        "shutter": "1/125",
+        "iso": 0,
+        "focal_length": "135/1"
+      },
+      "tags": [],
+      "featured": false,
+      "collection": "default"
+    },
+    "photo-022": {
+      "id": "photo-022",
+      "filename": "serpentEagle",
+      "title": "serpentEagle",
+      "description": "",
+      "location": "",
+      "date": "2025-08-22",
+      "camera": "Canon Canon EOS 650D",
+      "lens": "EF-S18-135mm f/3.5-5.6 IS STM",
+      "settings": {
+        "aperture": "28/5",
+        "shutter": "1/2000",
+        "iso": 0,
+        "focal_length": "135/1"
+      },
+      "tags": [],
+      "featured": false,
+      "collection": "default"
+    },
+    "photo-023": {
+      "id": "photo-023",
+      "filename": "shuklaDhwitheeya",
+      "title": "shuklaDhwitheeya",
+      "description": "",
+      "location": "",
+      "date": "2025-08-25",
+      "camera": "Apple iPhone 16",
+      "lens": "iPhone 16 back dual wide camera 5.96mm f/1.6",
+      "settings": {
+        "aperture": "8/5",
+        "shutter": "1/30",
+        "iso": 0,
+        "focal_length": "6249513/1048576"
+      },
+      "tags": [],
+      "featured": false,
+      "collection": "default"
+    },
+    "photo-024": {
+      "id": "photo-024",
+      "filename": "someshwara",
+      "title": "someshwara falls",
+      "description": "",
+      "location": "",
+      "date": "2025-07-27",
+      "camera": "Apple iPhone 16",
+      "lens": "iPhone 16 back dual wide camera 5.96mm f/1.6",
+      "settings": {
+        "aperture": "8/5",
+        "shutter": "1/3636",
+        "iso": 0,
+        "focal_length": "6249513/1048576"
+      },
+      "tags": [],
+      "featured": false,
+      "collection": "default"
+    },
+    "photo-025": {
+      "id": "photo-025",
+      "filename": "spottedDeer",
+      "title": "spottedDeer",
+      "description": "",
+      "location": "",
+      "date": "2025-08-22",
+      "camera": "Canon Canon EOS 650D",
+      "lens": "EF-S18-135mm f/3.5-5.6 IS STM",
+      "settings": {
+        "aperture": "28/5",
+        "shutter": "1/2000",
+        "iso": 0,
+        "focal_length": "135/1"
+      },
+      "tags": [],
+      "featured": false,
+      "collection": "default"
+    },
+    "photo-026": {
+      "id": "photo-026",
+      "filename": "testcentre",
+      "title": "testcentre",
+      "description": "",
+      "location": "",
+      "date": "2025-09-14",
+      "camera": "Apple iPhone 16",
+      "lens": "iPhone 16 back dual wide camera 5.96mm f/1.6",
+      "settings": {
+        "aperture": "8/5",
+        "shutter": "1/50",
+        "iso": 0,
+        "focal_length": "6249513/1048576"
+      },
+      "tags": [],
+      "featured": false,
+      "collection": "default"
+    },
+    "photo-027": {
+      "id": "photo-027",
+      "filename": "wildmother",
+      "title": "wildmother",
+      "description": "",
+      "location": "",
+      "date": "2025-05-19",
+      "camera": "Apple iPhone 16",
+      "lens": "iPhone 16 back dual wide camera 5.96mm f/1.6",
+      "settings": {
+        "aperture": "8/5",
+        "shutter": "1/60",
+        "iso": 0,
+        "focal_length": "6249513/1048576"
+      },
+      "tags": [],
+      "featured": false,
+      "collection": "default"
+    }
+  }
+}

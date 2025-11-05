@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="raaghava.net">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>raaghava.net</title>
+
+    <!-- CSS Files - Order matters for cascade -->
+    <link rel="stylesheet" href="css/theme.css?v=2025110501">
+    <link rel="stylesheet" href="css/main.css?v=2025110501">
+    <link rel="stylesheet" href="css/museum-labels.css?v=2025110501">
+    <link rel="stylesheet" href="css/controllers.css?v=2025110501">
+    <link rel="stylesheet" href="css/lightbox.css?v=2025110501">
+    <link rel="stylesheet" href="css/search.css?v=2025110502">
+    <link rel="stylesheet" href="css/animations.css?v=2025110501">
+
+    <!-- Preload critical resources -->
+    <link rel="preload" href="lib/marked.min.js" as="script">
+    <link rel="preload" href="assets/fonts/atkinson-hyperlegible.woff2" as="font" type="font/woff2" crossorigin>
+</head>
+<body>
+    <!-- Main App Container -->
+    <div id="app" class="app">
+
+        <!-- Museum Room Container - This creates our one-point perspective -->
+        <main id="room" class="room" role="main" aria-label="Museum room">
+
+            <!-- Back Wall - Main content display area -->
+            <section class="wall back-wall" aria-label="Back wall">
+                <div class="content-frame" id="back-content">
+                    <!-- Dynamic content loads here -->
+                </div>
+            </section>
+
+            <!-- Left Wall - Navigation element -->
+            <section class="wall left-wall" aria-label="Left wall">
+                <div class="content-frame" id="left-content">
+                    <!-- Dynamic content loads here -->
+                </div>
+            </section>
+
+            <!-- Right Wall - Navigation element -->
+            <section class="wall right-wall" aria-label="Right wall">
+                <div class="content-frame" id="right-content">
+                    <!-- Dynamic content loads here -->
+                </div>
+            </section>
+
+            <!-- Front Wall - Navigation element (closest to viewer) -->
+            <section class="wall front-wall" aria-label="Front wall">
+                <div class="content-frame" id="front-content">
+                    <!-- Dynamic content loads here -->
+                </div>
+            </section>
+
+            <!-- 4-Wall Layout Elements -->
+            <section class="wall leftmost-wall" aria-label="Leftmost wall">
+                <div class="content-frame" id="leftmost-content">
+                    <!-- Dynamic content loads here -->
+                </div>
+            </section>
+
+            <section class="wall leftmiddle-wall" aria-label="Left middle wall">
+                <div class="content-frame" id="leftmiddle-content">
+                    <!-- Dynamic content loads here -->
+                </div>
+            </section>
+
+            <section class="wall rightmiddle-wall" aria-label="Right middle wall">
+                <div class="content-frame" id="rightmiddle-content">
+                    <!-- Dynamic content loads here -->
+                </div>
+            </section>
+
+            <section class="wall rightmost-wall" aria-label="Rightmost wall">
+                <div class="content-frame" id="rightmost-content">
+                    <!-- Dynamic content loads here -->
+                </div>
+            </section>
+
+            <!-- Floor - Subtle visual element -->
+            <section class="floor" aria-hidden="true"></section>
+
+            <!-- Ceiling - Subtle visual element -->
+            <section class="ceiling" aria-hidden="true"></section>
+
+        </main>
+
+        <!-- Back Button - Top left -->
+        <button id="back-btn" class="control-btn back-btn" aria-label="Go back" title="Go back (B)">
+            ← Back (B)
+        </button>
+
+        <!-- Fixed UI Controls - Top right -->
+        <nav class="controls" role="navigation" aria-label="Site controls">
+
+            <!-- Search Toggle -->
+            <button id="search-toggle" class="control-btn search-toggle" aria-label="Toggle search" title="Search (/)">
+                Search (/)
+            </button>
+
+            <!-- Theme Toggle - Light/Dark mode -->
+            <button id="theme-toggle" class="control-btn theme-toggle" aria-label="Toggle theme" title="Toggle theme (T)">
+                Light/Dark (T)
+            </button>
+
+            <!-- Sitemap Toggle - Accessibility mode -->
+            <button id="sitemap-toggle" class="control-btn sitemap-toggle" aria-label="Toggle sitemap view" title="Plaintext (P)">
+                Plaintext (P)
+            </button>
+
+        </nav>
+
+        <!-- Sitemap Overlay - Text-only navigation -->
+        <aside id="sitemap" class="sitemap hidden" role="complementary" aria-label="Site navigation">
+            <div class="sitemap-content">
+                <h1>raaghava.net</h1>
+                <nav class="sitemap-nav" id="sitemap-nav">
+                    <!-- Dynamic sitemap generates here -->
+                </nav>
+                <button class="close-sitemap" aria-label="Close sitemap">Close (Esc)</button>
+            </div>
+        </aside>
+
+        <!-- Search Overlay - Global search -->
+        <aside id="search-overlay" class="search-overlay hidden" role="dialog" aria-label="Search">
+            <div class="search-content">
+                <div class="search-header">
+                    <input
+                        type="text"
+                        id="search-input"
+                        class="search-input"
+                        placeholder="Search everything..."
+                        aria-label="Search input"
+                        autocomplete="off"
+                        spellcheck="false"
+                    />
+                    <button class="close-search" aria-label="Close search">Close (Esc)</button>
+                </div>
+                <div id="search-results" class="search-results">
+                    <!-- Dynamic search results appear here -->
+                </div>
+            </div>
+        </aside>
+
+        <!-- Loading Indicator -->
+        <div id="loading" class="loading hidden" aria-hidden="true">
+            <div class="loading-spinner"></div>
+            <p>Loading...</p>
+        </div>
+
+        <!-- Error Display -->
+        <div id="error" class="error hidden" role="alert" aria-live="polite">
+            <p class="error-message"></p>
+            <button class="error-close">Close</button>
+        </div>
+
+        <!-- Hierarchy Indicator -->
+        <div id="hierarchy-indicator" class="hierarchy-indicator" aria-label="Current location">
+            <span id="hierarchy-path"></span>
+        </div>
+
+        <!-- Desktop Viewing Recommendation Overlay -->
+        <div id="rotate-overlay" class="rotate-overlay hidden" role="dialog" aria-label="Desktop viewing recommendation">
+            <div class="rotate-content">
+                <div class="rotate-icon" aria-hidden="true">⌨</div>
+                <h2>Sometimes, the medium is the message</h2>
+                <p>This website is best viewed via a computer</p>
+                <button id="plaintext-from-overlay" class="plaintext-button">View in Plaintext</button>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- JavaScript - Load order matters -->
+    <script src="lib/marked.min.js?v=2025110501"></script>
+    <script src="js/theme.js?v=2025110501"></script>
+    <script src="js/museum-label-generator.js?v=2025110501"></script>
+    <script src="js/router.js?v=2025110501"></script>
+    <script src="js/content-loader.js?v=2025110501"></script>
+    <script src="js/markdown-parser.js?v=2025110501"></script>
+    <script src="js/lightbox.js?v=2025110501"></script>
+    <script src="js/search.js?v=2025110501"></script>
+    <!-- Controllers -->
+    <script src="js/controllers/about-controller.js?v=2025110501"></script>
+    <script src="js/controllers/photography-controller.js?v=2025110501"></script>
+    <script src="js/controllers/writings-controller.js?v=2025110501"></script>
+    <script src="js/controllers/music-controller.js?v=2025110501"></script>
+    <script src="js/controllers/projects-controller.js?v=2025110501"></script>
+    <script src="js/controllers/curated-writings-controller.js?v=2025110501"></script>
+    <script src="js/controllers/curated-cinema-controller.js?v=2025110501"></script>
+    <script src="js/controllers/curated-music-controller.js?v=2025110501"></script>
+    <script src="js/controllers/curated-misc-controller.js?v=2025110501"></script>
+    <script src="js/app.js?v=2025110501"></script>
+
+</body>
+</html>
